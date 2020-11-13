@@ -7,9 +7,12 @@ import unidecode
 
 """
 Download full collection of Paul Graham essays in EPUB & Markdown.
-Use --FORMAT flag for download in a convinient format --MARKDOWN, --PDF, --HTML
+
 Merge all the files using:
     cat essays/*.md > graham.md
+
+Convert to EPUB them using pandoc
+    pandoc graham.md -o graham.epub -f gfm --metadata title="Paul Graham Essays"
 """
 
 rss = feedparser.parse("http://www.aaronsw.com/2002/feeds/pgessays.rss")
