@@ -6,8 +6,8 @@
 
 ---
 
-Download the *complete collection* of the current 193 essays from [Paul Graham] website and export them in EPUB and Markdown for easy [AFK] reading.
-Running `wc` it turned out to be a wooping ~466K words (a The Lord of the Rings saga in total length) but about crazy travels in the startup worlds. I used the RSS originally made by [Aaron Swartz], `feedparser`, `html2text` and `Unidecode` libraries for data cleaning. To create the EPUB files you should have installed `pandoc` to properly execute the script.
+Download the *complete collection* of 193 essays from [Paul Graham] website and export them in EPUB and Markdown for easy [AFK] reading.
+Running `wc` it turned out to be a whooping ~466K words (a The Lord of the Rings saga in total length) but about crazy travels in the startup worlds. I used the RSS originally made by [Aaron Swartz], `feedparser`, `html2text` and `Unidecode` libraries for data cleaning. To create the EPUB files you should have installed `pandoc` to properly execute the script.
 
 [AFK]: https://www.grammarly.com/blog/afk-meaning/
 [Paul Graham]: http://www.paulgraham.com/articles.html
