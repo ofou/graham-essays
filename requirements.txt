@@ -1,0 +1,3 @@
+feedparser==6.0.2
+html2text==2020.1.16
+Unidecode==1.1.1
