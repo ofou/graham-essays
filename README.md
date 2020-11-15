@@ -16,9 +16,11 @@ Running `wc` it turned out to be a whooping ~466K words (a The Lord of the Rings
 ## Usage
 
 ```bash
-python3 -m venv .venv
+sudo apt-get install python3.8-venv
+python3.8 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+mkdir essays
 python graham.py # wait for it
 make epub
 ```
