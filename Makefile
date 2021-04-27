@@ -1,20 +1,38 @@
 SHELL := /bin/bash
 
-merge:
-		@echo "Merging files into a single markdown file..."
-		cat essays/*.md > graham.md
+.SILENT: clean venv fetch merge epub words count
 
-words:
-		@echo "Counting words..."
-		wc --words essays/* | sort -n
+all: 	clean venv fetch merge epub 
+
+clean: 
+		@echo "🗑 Cleaning up the room..."
+		rm -rf essays .venv graham.epub graham.md ; true
+
+merge:
+		@echo "🌪 Merging articles..."
+		pandoc essays/*.md -o graham.md -f markdown_strict
+
+count:	
+		wc -w essays/* | sort -n
 
 venv:
-		python3 -m venv .venv
-		source .venv/bin/activate
+		@echo "🐍 Creating a safe place for a Python... "
+		mkdir essays
+		python3.8 -m venv .venv
+		source ".venv/bin/activate"
+		pip install --upgrade pip
 		pip install -r requirements.txt
 
+dependencies: # for MacOS
+		brew install python3
+		brew install --build-from-source pandoc
+
+fetch:	
+		@echo "🧠 Downloading Paul Graham mind... "
+		python graham.py 
+
 epub:
-		${merge_files}
-		@echo "Pandoc is doing the EPUB heavy-lifting..."
-		pandoc graham.md -o graham.epub -f gfm --metadata title="Paul Graham Essays"
-		@echo "EPUB file created ✅"
+		${merge}
+		@echo "📒 Binding the EPUB... "
+		pandoc essays/*.md -o graham.epub -f markdown_strict --metadata-file=metadata.yaml --toc --toc-depth=1 --epub-cover-image=cover.png
+		@echo "EPUB file created 🎉"
