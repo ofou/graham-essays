@@ -6,17 +6,19 @@
 
 ---
 
-Download the _complete collection_ of 201 essays from [Paul Graham] website and export them in EPUB and Markdown for easy [AFK] reading. It turned out to be a whooping ~462,774 words. I used the RSS originally made by [Aaron Swartz], `feedparser`, `html2text` and `Unidecode` libraries for data cleaning. To create the EPUB files you should have installed You should have installed [python3] and [pandoc] to properly execute the script.
+Download the _complete collection_ of 201 essays from [Paul Graham] website and export them in EPUB and Markdown for easy [AFK] reading. It turned out to be a whooping ~462,774 words. I used the RSS originally made by [Aaron Swartz], `feedparser`, `html2text` and `Unidecode` libraries for data cleaning.
 
-[afk]: https://www.grammarly.com/blog/afk-meaning/
-[paul graham]: http://www.paulgraham.com/articles.html
-[aaron swartz]: https://en.wikipedia.org/wiki/Aaron_Swartz
-[python3]: https://www.python.org/downloads
-[pandoc]: https://pandoc.org/installing.html
+## Dependencies
+
+To create the EPUB files you should have installed [python3] and [pandoc].
+
+```bash
+brew install pandoc python3
+```
 
 ## Usage
 
-Run `make all` in the root directory.
+Run `make all` in the repository directory.
 
 ### The Current Essays
 
@@ -225,3 +227,9 @@ Run `make all` in the root directory.
 ---
 
 _If you have any ideas, suggestions, curses or feedback in order to improve the code, please don't hesitate in opening an issue or PR. They'll be very welcomed!_
+
+[afk]: https://www.grammarly.com/blog/afk-meaning/
+[paul graham]: http://www.paulgraham.com/articles.html
+[aaron swartz]: https://en.wikipedia.org/wiki/Aaron_Swartz
+[python3]: https://www.python.org/downloads
+[pandoc]: https://pandoc.org/installing.html
