@@ -35,4 +35,4 @@ epub:
 		${merge}
 		@echo "📒 Binding the EPUB... "
 		pandoc essays/*.md -o graham.epub -f markdown_strict --metadata-file=metadata.yaml --toc --toc-depth=1 --epub-cover-image=cover.png
-		@echo "EPUB file created 🎉"
+		@echo "🎉 EPUB file created."
