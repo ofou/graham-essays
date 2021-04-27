@@ -18,7 +18,11 @@ brew install pandoc python3
 
 ## Usage
 
-Run `make all` in the repository directory.
+Run the [makefile](./Makefile) in the root directory
+
+```bash
+make all
+```
 
 ### The Current Essays
 
