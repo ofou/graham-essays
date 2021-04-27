@@ -38,7 +38,7 @@ for entry in reversed(rss.entries):
                           else "\n"+p+"\n") for p in parsed.split("\n")]
 
                 file.write("".join(parsed).encode())
-                print(f"✅ {art_no:03} {entry['title']}")
+                print(f"- ✅ {art_no:03} {entry['title']}")
 
     except Exception as e:
         print(f"❌ {art_no:03} {entry['title']}, ({e})")
