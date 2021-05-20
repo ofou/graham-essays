@@ -240,6 +240,6 @@ _If you have any ideas, suggestions, curses or feedback in order to improve the 
 [afk]: https://www.grammarly.com/blog/afk-meaning/
 [paul graham]: http://www.paulgraham.com/articles.html
 [aaron swartz]: https://en.wikipedia.org/wiki/Aaron_Swartz
-[python3]: https://www.python.org/downloads
+[python3.9]: https://www.python.org/downloads
 [pandoc]: https://pandoc.org/installing.html
 [calibre]: https://calibre-ebook.com/
