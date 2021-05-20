@@ -33,14 +33,15 @@ for entry in reversed(rss.entries):
             with open(f"./essays/{art_no:03}_{title}.md", 'wb+') as file:
                 file.write(f"# {art_no:03} {entry['title']}\n\n".encode())
                 parsed = parsed.replace("[](index.html)  \n  \n", "")
-                parsed = [(p.replace("\n", "")
+
+                parsed = [(p.replace("\n", " ")
                           if re.match(r"^[\p{Z}\s]*(?:[^\p{Z}\s][\p{Z}\s]*){5,100}$", p)
                           else "\n"+p+"\n") for p in parsed.split("\n")]
-
-                file.write("".join(parsed).encode())
+                
+                file.write(" ".join(parsed).encode())
                 print(f"- ✅ {art_no:03} {entry['title']}")
 
     except Exception as e:
         print(f"❌ {art_no:03} {entry['title']}, ({e})")
     art_no += 1
-    time.sleep(0.5)  # half sec/article is ~2min, be nice with servers!
+    time.sleep(0.05)  # half sec/article is ~2min, be nice with servers!
