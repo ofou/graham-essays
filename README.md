@@ -6,7 +6,7 @@
 
 ---
 
-Download the _complete collection_ of 201 essays from [Paul Graham] website and export them in EPUB and Markdown for easy [AFK] reading. It turned out to be a whooping ~462,774 words. I used the RSS originally made by [Aaron Swartz], `feedparser`, `html2text` and `Unidecode` libraries for data cleaning.
+Download the _complete collection_ of +200 essays from [Paul Graham] website and export them in EPUB and Markdown for easy [AFK] reading. It turned out to be a whooping ~462,774 words. I used the RSS originally made by [Aaron Swartz], `feedparser`, `html2text` and `Unidecode` libraries for data cleaning.
 
 ## Dependencies for MacOS
 
