@@ -227,6 +227,9 @@ make all
 - ✅ 199 Write Simply
 - ✅ 200 How People Get Rich Now
 - ✅ 201 The Real Reason to End the Death Penalty
+- ✅ 202 An NFT That Saves Lives
+- ✅ 203 Crazy New Ideas
+- ✅ 204 Fierce Nerds
 
 ---
 
