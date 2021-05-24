@@ -17,6 +17,9 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
+    - name: Updating OS
+      run: |
+        sudo apt update -y & sudo apt upgrade -y
     - name: Installing pandoc and calibre
       run: |
         sudo apt install pandoc -y
