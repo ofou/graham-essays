@@ -29,6 +29,9 @@ make all
 
 ### The Current Essays
 
+<details><summary>202/204.</summary>
+<p>
+
 - ✅ 001 This Year We Can End the Death Penalty in California
 - ✅ 002 Programming Bottom-Up
 - ❌ 003 Chapter 2 of Ansi Common Lisp, (HTTP Error 404: Not Found)
@@ -233,6 +236,9 @@ make all
 - ✅ 202 An NFT That Saves Lives
 - ✅ 203 Crazy New Ideas
 - ✅ 204 Fierce Nerds
+
+</p>
+</details>
 
 ---
 
