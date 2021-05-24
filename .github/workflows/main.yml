@@ -18,11 +18,11 @@ jobs:
       - name: Install dependencies
         run: |
           brew install python@3.9
+          python3.9 -m pip install --upgrade pip
       
       - name: 🐍 Creating a safe place for a Python...
         run: |
           mkdir essays
           python3.9 -m venv .venv
-          source ".venv/bin/activate"
-          pip install --upgrade pip3
+          source .venv/bin/activate
           pip install -r requirements.txt
