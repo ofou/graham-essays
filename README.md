@@ -7,11 +7,11 @@
 
 ---
 
-Download the _complete collection_ of +200 essays from [Paul Graham] website and export them in EPUB and Markdown for easy [AFK] reading. It turned out to be a whooping ~462,774 words. I used the RSS originally made by [Aaron Swartz], `feedparser`, `html2text` and `Unidecode` libraries for data cleaning.
+Download the _complete collection_ of +200 essays from [Paul Graham] website and export them in EPUB, MOBI and Markdown for easy [AFK] reading. It turned out to be a whooping +478k words. I used the RSS originally made by [Aaron Swartz], `feedparser`, `html2text` and `Unidecode` libraries for data cleaning.
 
 ## Dependencies for MacOS
 
-To create the EPUB files you should have installed [python3.9], [pandoc] and [calibre] for Kindle readers.
+To create the EPUB/MOBI files you should have installed [python3.9], [pandoc] and [calibre] for Kindle readers.
 
 ```bash
 brew install python@3.9
