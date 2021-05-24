@@ -17,4 +17,5 @@ jobs:
 
       - name: Run a multi-line script
         run: |
+          brew install python@3.9
           make all
