@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 .SILENT: dependencies clean venv fetch merge epub words count mobi
 
-all:  	dependencies clean venv fetch merge epub mobi
+all:  	clean venv fetch merge epub mobi
 
 clean: 
 		@echo "🗑 Cleaning up the room..."
