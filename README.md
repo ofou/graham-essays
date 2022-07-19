@@ -27,6 +27,8 @@ Run the [makefile](./Makefile) in the root directory
 make all
 ```
 
+https://github.com/ofou/graham-essays/blob/c2c9bc89bac790a7beb0f3c2efeba0dcacb9caa8/Makefile#L5:L45
+
 ### Current Essays
 
 Here's a [list](./essays.csv) of the current essays included.
