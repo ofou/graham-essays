@@ -29,16 +29,17 @@ if art_no == 1:
         os.remove(FILE)
 
 for entry in reversed(rss.entries):
-    url = entry['link']
+    URL = entry['link']
+    TITLE = entry['title']
 
     try:
-        with urllib.request.urlopen(url) as website:
+        with urllib.request.urlopen(URL) as website:
             content = website.read().decode('unicode_escape', "utf-8")
             parsed = h.handle(content)
-            title = "_".join(entry['title'].split(" ")).lower()
+            title = "_".join(TITLE.split(" ")).lower()
             title = re.sub(r'[\W\s]+', '', title)
             with open(f"./essays/{art_no:03}_{title}.md", 'wb+') as file:
-                file.write(f"# {art_no:03} {entry['title']}\n\n".encode())
+                file.write(f"# {art_no:03} {TITLE}\n\n".encode())
                 parsed = parsed.replace("[](index.html)  \n  \n", "")
 
                 parsed = [(p.replace("\n", " ")
@@ -46,7 +47,7 @@ for entry in reversed(rss.entries):
                           else "\n"+p+"\n") for p in parsed.split("\n")]
 
                 file.write(" ".join(parsed).encode())
-                print(f"✅ {art_no:03} {entry['title']}")
+                print(f"✅ {art_no:03} {TITLE}")
 
                 with open(FILE, 'a+', newline='\n') as f:
                     csvwriter = csv.writer(
@@ -61,10 +62,12 @@ for entry in reversed(rss.entries):
                             f, fieldnames=fieldnames)
                         csvwriter.writeheader()
 
+                    date = find_date(entry['link'])
+
                     line = [art_no,
-                            entry['title'],
-                            find_date(entry['link']),
-                            url]
+                            TITLE,
+                            date,
+                            f"[{URL}]({URL})", ]
 
                     csvwriter.writerow(line)
 
