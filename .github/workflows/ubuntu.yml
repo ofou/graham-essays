@@ -2,21 +2,21 @@ name: Ubuntu
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Installing pandoc and calibre
-      run: |
-        sudo apt install pandoc -y
-        sudo apt install calibre -y
-    - name: Running app
-      run: |
-        make all
+      - uses: actions/checkout@v2
+      - name: Installing pandoc and calibre
+        run: |
+          sudo apt install pandoc -y
+          sudo apt install calibre -y
+          pip install --upgrade chardet
+      - name: Running app
+        run: |
+          make all
