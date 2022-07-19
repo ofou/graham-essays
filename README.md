@@ -14,7 +14,7 @@ Download the _complete collection_ of +200 essays from [Paul Graham] website and
 To create the EPUB/MOBI files you should have installed [python3.9], [pandoc] and [calibre] for Kindle readers.
 
 ```bash
-brew install python@3.9
+brew install python@3
 brew install --build-from-source pandoc
 brew install --cask calibre
 ```

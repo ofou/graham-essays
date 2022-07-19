@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 .SILENT: dependencies clean venv fetch merge epub words count mobi
 
-all:  	clean venv fetch merge epub mobi
+all:  	dependencies clean venv fetch merge epub mobi
 
 clean: 
 		@echo "🗑 Cleaning up the room..."
@@ -20,8 +20,8 @@ venv:
 		mkdir essays
 		python3 -m venv .venv
 		source ".venv/bin/activate"
-		pip install --upgrade pip
-		pip install -r requirements.txt
+		pip3 install --upgrade pip
+		pip3 install -r requirements.txt
 
 dependencies: # for MacOS
 		brew install python@3
