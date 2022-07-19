@@ -19,4 +19,4 @@ jobs:
           pip install --upgrade chardet
       - name: Running app
         run: |
-          make all
+          make clean venv fetch merge epub
