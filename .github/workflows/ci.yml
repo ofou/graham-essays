@@ -5,12 +5,15 @@ on:
   push:
     branches:
       - "master"
+    tags-ignore:
+      - "*"
   schedule:
     - cron: "0 0 * * *"
 
+
 jobs:
   pre-release:
-    name: "Pre Release"
+    name: "EPUB & MOBI"
     runs-on: "macos-latest"
 
     steps:
@@ -25,7 +28,7 @@ jobs:
           repo_token: "${{ secrets.GRAHAM_ESSAYS }}"
           automatic_release_tag: "latest"
           prerelease: true
-          title: "Build files"
+          title: "Paul Graham Essays"
           files: |
             *.epub
             *.mobi
