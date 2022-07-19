@@ -21,13 +21,9 @@ brew install --cask calibre
 
 ## Usage
 
-Run the [makefile](./Makefile) in the root directory
+Run the [Makefile](./Makefile) in the root directory using `make all`.
 
-```bash
-make all
-```
-
-https://github.com/ofou/graham-essays/blob/c2c9bc89bac790a7beb0f3c2efeba0dcacb9caa8/Makefile#L5:L45
+https://github.com/ofou/graham-essays/blob/80249f949235c56c87479bdfd4f32063266d3527/Makefile#L5-L45
 
 ### Current Essays
 
