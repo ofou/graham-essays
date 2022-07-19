@@ -21,10 +21,10 @@ h.escape_all = True
 h.reference_links = True
 h.mark_code = True
 
-art_no = 1
+ART_NO = 1
 FILE = "./essays.csv"
 
-if art_no == 1:
+if ART_NO == 1:
     if os.path.isfile(FILE):
         os.remove(FILE)
 
@@ -38,8 +38,8 @@ for entry in reversed(rss.entries):
             parsed = h.handle(content)
             title = "_".join(TITLE.split(" ")).lower()
             title = re.sub(r'[\W\s]+', '', title)
-            with open(f"./essays/{art_no:03}_{title}.md", 'wb+') as file:
-                file.write(f"# {art_no:03} {TITLE}\n\n".encode())
+            with open(f"./essays/{ART_NO:03}_{title}.md", 'wb+') as file:
+                file.write(f"# {ART_NO:03} {TITLE}\n\n".encode())
                 parsed = parsed.replace("[](index.html)  \n  \n", "")
 
                 parsed = [(p.replace("\n", " ")
@@ -47,7 +47,7 @@ for entry in reversed(rss.entries):
                           else "\n"+p+"\n") for p in parsed.split("\n")]
 
                 file.write(" ".join(parsed).encode())
-                print(f"✅ {art_no:03} {TITLE}")
+                print(f"✅ {ART_NO:03} {TITLE}")
 
                 with open(FILE, 'a+', newline='\n') as f:
                     csvwriter = csv.writer(
@@ -56,22 +56,22 @@ for entry in reversed(rss.entries):
                         delimiter=',',
                         quotechar='"')
 
-                    if art_no == 1:
+                    if ART_NO == 1:
                         fieldnames = ["Article no.", "Title", "Date", "URL"]
                         csvwriter = csv.DictWriter(
                             f, fieldnames=fieldnames)
                         csvwriter.writeheader()
 
-                    date = find_date(entry['link'])
+                    DATE = find_date(entry['link'])
 
-                    line = [art_no,
+                    line = [ART_NO,
                             TITLE,
-                            date,
-                            f"[{URL}]({URL})", ]
+                            DATE,
+                            URL]
 
                     csvwriter.writerow(line)
 
     except Exception as e:
-        print(f"❌ {art_no:03} {entry['title']}, ({e})")
-    art_no += 1
+        print(f"❌ {ART_NO:03} {entry['title']}, ({e})")
+    ART_NO += 1
     time.sleep(0.05)  # half sec/article is ~2min, be nice with servers!

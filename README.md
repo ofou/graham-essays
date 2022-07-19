@@ -7,14 +7,11 @@
 
 ---
 
-Download the _complete collection_ of +200 essays from [Paul Graham] website and export them in [EPUB], [MOBI] and Markdown for easy [AFK] reading. It turned out to be a whooping +478k words. I used the RSS originally made by [Aaron Swartz], `feedparser`, `html2text` and `Unidecode` libraries for data cleaning.
-
-[EPUB]: https://github.com/ofou/graham-essays/raw/main/graham.epub
-[MOBI]: https://github.com/ofou/graham-essays/raw/main/graham.mobi
+Download the _complete collection_ of +200 essays from [Paul Graham] website and export them in [EPUB], [MOBI] and Markdown for easy [AFK] reading. It turned out to be a whooping +500k words. I used the RSS originally made by [Aaron Swartz], `feedparser`, `html2text` and `Unidecode` libraries for data cleaning.
 
 ## Dependencies for MacOS
 
-To create the EPUB/MOBI files you should have installed [python3.9], [pandoc] and [calibre] for Kindle readers.
+To create the EPUB/MOBI files you should have installed [python3], [pandoc] and [calibre] for Kindle readers.
 
 ```bash
 brew install python@3
@@ -41,6 +38,8 @@ _If you have any ideas, suggestions, curses or feedback in order to improve the 
 [afk]: https://www.grammarly.com/blog/afk-meaning/
 [paul graham]: http://www.paulgraham.com/articles.html
 [aaron swartz]: https://en.wikipedia.org/wiki/Aaron_Swartz
-[python3.9]: https://www.python.org/downloads
+[python3]: https://www.python.org/downloads
 [pandoc]: https://pandoc.org/installing.html
 [calibre]: https://calibre-ebook.com/
+[EPUB]: https://github.com/ofou/graham-essays/raw/main/graham.epub
+[MOBI]: https://github.com/ofou/graham-essays/raw/main/graham.mobi
