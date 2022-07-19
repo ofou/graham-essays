@@ -30,16 +30,16 @@ dependencies: # for MacOS
 
 fetch:	
 		@echo "🧠 Downloading Paul Graham mind... "
-		python graham.py 
+		python3 graham.py 
 
 epub:
 		${merge}
-		@echo "📒 Binding the EPUB... "
+		@echo "📒 Binding EPUB... "
 		pandoc essays/*.md -o graham.epub -f markdown_strict --metadata-file=metadata.yaml --toc --toc-depth=1 --epub-cover-image=cover.png
 		@echo "🎉 EPUB file created."
 
 mobi:
 		${epub}
-		@echo "📒 Binding the MOBI... "
+		@echo "📒 Binding MOBI... "
 		ebook-convert graham.epub graham.mobi
 		@echo "🎉 MOBI file created."
