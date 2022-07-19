@@ -18,13 +18,13 @@ count:
 venv:
 		@echo "🐍 Creating a safe place for a Python... "
 		mkdir essays
-		python3.9 -m venv .venv
+		python3 -m venv .venv
 		source ".venv/bin/activate"
 		pip install --upgrade pip
 		pip install -r requirements.txt
 
 dependencies: # for MacOS
-		brew install python@3.9
+		brew install python@3
 		brew install --build-from-source pandoc
 		brew install --cask calibre
 
