@@ -1,4 +1,4 @@
-name: Runing on Ubuntu
+name: Ubuntu
 
 on:
   push:
