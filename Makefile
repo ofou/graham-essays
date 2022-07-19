@@ -19,7 +19,7 @@ venv:
 		@echo "🐍 Creating a safe place for a Python... "
 		mkdir essays
 		python3 -m venv .venv
-		source ".venv/bin/activate"
+		source "./.venv/bin/activate"
 		pip3 install --upgrade pip
 		pip3 install -r requirements.txt
 
