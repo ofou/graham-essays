@@ -5,8 +5,6 @@ on:
   push:
     branches:
       - "master"
-    tags-ignore:
-      - "*"
   schedule:
     - cron: "0 0 * * *"
 
@@ -17,7 +15,8 @@ jobs:
     runs-on: "macos-latest"
 
     steps:
-      # ...
+      - name: set env
+        run: echo "::set-env name=NOW::$(date +'%Y-%m-%d')"
       - name: "Build & test"
         run: |
           make dependencies
@@ -28,6 +27,7 @@ jobs:
           repo_token: "${{ secrets.GRAHAM_ESSAYS }}"
           automatic_release_tag: "latest"
           prerelease: true
+          tag: ${{ env.NOW }}
           title: "Paul Graham Essays"
           files: |
             *.epub
