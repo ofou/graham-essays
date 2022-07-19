@@ -13,24 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.9
-    - name: Updating OS
-      run: |
-        sudo apt update -y & sudo apt upgrade -y
     - name: Installing pandoc and calibre
       run: |
         sudo apt install pandoc -y
         sudo apt install calibre -y
-    - name: Install Python libraries
-      run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Running app
       run: |
         make all
-
-            
