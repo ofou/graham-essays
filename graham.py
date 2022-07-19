@@ -46,15 +46,16 @@ for entry in reversed(rss.entries):
                           else "\n"+p+"\n") for p in parsed.split("\n")]
 
                 file.write(" ".join(parsed).encode())
-                print(f"- ✅ {art_no:03} {entry['title']}")
+                print(f"✅ {art_no:03} {entry['title']}")
 
                 with open(FILE, 'a+') as csv:
                     if art_no == 1:
                         csv.write(f"Article No., Title, Date, URL \n")
                     date = find_date(
                         entry['link'], original_date=True, extensive_search=True)
+                    title = entry['title'].replace("\"", "'")
                     csv.write(
-                        f"{art_no:03},{entry['title']},{date},{entry['link']}\n")
+                        f"{art_no:03},{title},{date},{entry['link']}\n")
                     # print(entry)
 
     except Exception as e:
