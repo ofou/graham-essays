@@ -29,7 +29,7 @@ make all
 
 ### Current Essays
 
-Here's a [list](./essays.csv) of the current essays.
+Here's a [list](./essays.csv) of the current essays included.
 
 ---
 
