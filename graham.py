@@ -7,6 +7,7 @@ import html2text
 import unidecode
 import regex as re
 from htmldate import find_date
+import csv
 
 """
 Download a collection of Paul Graham essays in EPUB & Markdown.
@@ -24,7 +25,6 @@ art_no = 1
 FILE = "./essays.csv"
 
 if art_no == 1:
-    # remove existing file
     if os.path.isfile(FILE):
         os.remove(FILE)
 
@@ -48,15 +48,25 @@ for entry in reversed(rss.entries):
                 file.write(" ".join(parsed).encode())
                 print(f"✅ {art_no:03} {entry['title']}")
 
-                with open(FILE, 'a+') as csv:
+                with open(FILE, 'a+', newline='\n') as f:
+                    csvwriter = csv.writer(
+                        f,
+                        quoting=csv.QUOTE_MINIMAL,
+                        delimiter=',',
+                        quotechar='"')
+
                     if art_no == 1:
-                        csv.write(f"Article No., Title, Date, URL \n")
-                    date = find_date(
-                        entry['link'], original_date=True, extensive_search=True)
-                    title = entry['title'].replace("\"", "'")
-                    csv.write(
-                        f"{art_no:03},{title},{date},{entry['link']}\n")
-                    # print(entry)
+                        fieldnames = ["Article no.", "Title", "Date", "URL"]
+                        csvwriter = csv.DictWriter(
+                            f, fieldnames=fieldnames)
+                        csvwriter.writeheader()
+
+                    line = [art_no,
+                            entry['title'],
+                            find_date(entry['link']),
+                            url]
+
+                    csvwriter.writerow(line)
 
     except Exception as e:
         print(f"❌ {art_no:03} {entry['title']}, ({e})")

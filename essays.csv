@@ -1,108 +1,107 @@
-Article No., Title, Date, URL 
-001,This Year We Can End the Death Penalty in California,2016-01-01,http://www.paulgraham.com/prop62.html
-002,Programming Bottom-Up,None,http://www.paulgraham.com/progbot.html
-005,Lisp for Web-Based Applications,2001-01-01,http://www.paulgraham.com/lwba.html
-006,Beating the Averages,1995-01-01,http://www.paulgraham.com/avg.html
-007,Java's Cover,2007-02-11,http://www.paulgraham.com/javacover.html
-008,Being Popular,2001-01-01,http://www.paulgraham.com/popular.html
-009,Five Questions about Language Design,2007-02-15,http://www.paulgraham.com/langdes.html
-010,The Roots of Lisp,2007-02-02,http://www.paulgraham.com/rootsoflisp.html
-011,The Other Road Ahead,1995-01-01,http://www.paulgraham.com/road.html
-012,What Made Lisp Different,2007-02-17,http://www.paulgraham.com/diff.html
-013,Why Arc Isn't Especially Object-Oriented,None,http://www.paulgraham.com/noop.html
-014,Taste for Makers,1999-01-01,http://www.paulgraham.com/taste.html
-015,What Languages Fix,2007-02-06,http://www.paulgraham.com/fix.html
-016,Succinctness is Power,2002-01-01,http://www.paulgraham.com/power.html
-017,Revenge of the Nerds,2001-12-14,http://www.paulgraham.com/icad.html
-018,A Plan for Spam,2016-08-02,http://www.paulgraham.com/spam.html
-019,Design and Research,2002-01-01,http://www.paulgraham.com/desres.html
-020,Better Bayesian Filtering,2002-01-01,http://www.paulgraham.com/better.html
-021,Why Nerds are Unpopular,2009-03-01,http://www.paulgraham.com/nerds.html
-022,The Hundred-Year Language,2003-01-01,http://www.paulgraham.com/hundred.html
-023,If Lisp is So Great,2003-01-01,http://www.paulgraham.com/iflisp.html
-024,Hackers and Painters,1996-01-01,http://www.paulgraham.com/hp.html
-025,Filters that Fight Back,2003-11-16,http://www.paulgraham.com/ffb.html
-026,What You Can't Say,2004-01-01,http://www.paulgraham.com/say.html
-027,The Word 'Hacker',2004-01-01,http://www.paulgraham.com/gba.html
-028,How to Make Wealth,2006-01-26,http://www.paulgraham.com/wealth.html
-029,Mind the Gap,2002-03-01,http://www.paulgraham.com/gap.html
-030,Great Hackers,2004-09-01,http://www.paulgraham.com/gh.html
-031,The Python Paradox,2014-12-01,http://www.paulgraham.com/pypar.html
-032,The Age of the Essay,1998-01-01,http://www.paulgraham.com/essay.html
-033,What the Bubble Got Right,2004-04-30,http://www.paulgraham.com/bubble.html
-034,A Version 1.0,2004-01-01,http://www.paulgraham.com/laundry.html
-035,Bradley's Ghost,2007-01-27,http://www.paulgraham.com/polls.html
-036,It's Charisma, Stupid,2007-02-12,http://www.paulgraham.com/charisma.html
-037,Made in USA,2004-01-01,http://www.paulgraham.com/usa.html
-038,What You'll Wish You'd Known,2005-01-01,http://www.paulgraham.com/hs.html
-039,How to Start a Startup,2005-10-21,http://www.paulgraham.com/start.html
-040,A Unified Theory of VC Suckage,2007-02-14,http://www.paulgraham.com/venturecapital.html
-041,Undergraduation,2005-01-01,http://www.paulgraham.com/college.html
-042,Writing,  Briefly,2007-10-16,http://www.paulgraham.com/writing44.html
-043,Return of the Mac,2005-01-01,http://www.paulgraham.com/mac.html
-044,Why Smart People Have Bad Ideas,2006-01-09,http://www.paulgraham.com/bronze.html
-045,The Submarine,2001-04-17,http://www.paulgraham.com/submarine.html
-046,Hiring is Obsolete,2006-01-10,http://www.paulgraham.com/hiring.html
-047,What Business Can Learn from Open Source,2008-12-01,http://www.paulgraham.com/opensource.html
-048,After the Ladder,2006-01-11,http://www.paulgraham.com/ladder.html
-049,Inequality and Risk,2006-01-07,http://www.paulgraham.com/inequality.html
-050,What I Did this Summer,2006-01-12,http://www.paulgraham.com/sfp.html
-051,Ideas for Startups,2006-04-21,http://www.paulgraham.com/ideas.html
-052,The Venture Capital Squeeze,2007-02-05,http://www.paulgraham.com/vcsqueeze.html
-053,How to Fund a Startup,2020-03-01,http://www.paulgraham.com/startupfunding.html
-054,Web 2.0,2005-09-30,http://www.paulgraham.com/web20.html
-055,Good and Bad Procrastination,2006-02-09,http://www.paulgraham.com/procrastination.html
-056,How to Do What You Love,2006-01-31,http://www.paulgraham.com/love.html
-057,Why YC,2006-01-01,http://www.paulgraham.com/whyyc.html
-058,6,631,372,1998-01-01,http://www.paulgraham.com/6631327.html
-059,Are Software Patents Evil?,2006-03-15,http://www.paulgraham.com/softwarepatents.html
-060,See Randomness,2006-01-01,http://www.paulgraham.com/randomness.html
-061,The Hardest Lessons for Startups to Learn,2007-01-30,http://www.paulgraham.com/startuplessons.html
-062,How to Be Silicon Valley,2006-08-02,http://www.paulgraham.com/siliconvalley.html
-063,Why Startups Condense in America,2007-02-04,http://www.paulgraham.com/america.html
-064,The Power of the Marginal,2004-03-15,http://www.paulgraham.com/marginal.html
-065,The Island Test,2006-07-21,http://www.paulgraham.com/island.html
-066,Copy What You Like,2006-01-01,http://www.paulgraham.com/copy.html
-067,How to Present to Investors,2007-01-30,http://www.paulgraham.com/investors.html
-068,A Student's Guide to Startups,2020-08-01,http://www.paulgraham.com/mit.html
-069,The 18 Mistakes That Kill Startups,2020-10-18,http://www.paulgraham.com/startupmistakes.html
-070,How Art Can Be Good,2007-01-26,http://www.paulgraham.com/goodart.html
-071,Learning from Founders,2007-01-01,http://www.paulgraham.com/foundersatwork.html
-072,Is It Worth Being Wise?,2008-08-01,http://www.paulgraham.com/wisdom.html
-073,Why to Not Not Start a Startup,2009-08-28,http://www.paulgraham.com/notnot.html
-074,Microsoft is Dead,2008-10-05,http://www.paulgraham.com/microsoft.html
-075,Two Kinds of Judgement,2020-02-01,http://www.paulgraham.com/judgement.html
-076,The Hacker's Guide to Investors,2007-02-01,http://www.paulgraham.com/guidetoinvestors.html
-077,An Alternative Theory of Unions,2007-01-01,http://www.paulgraham.com/unions.html
-078,The Equity Equation,2007-07-17,http://www.paulgraham.com/equity.html
-079,Stuff,2007-08-01,http://www.paulgraham.com/stuff.html
-080,Holding a Program in One's Head,2007-01-01,http://www.paulgraham.com/head.html
-081,How Not to Die,2007-01-01,http://www.paulgraham.com/die.html
-082,News from the Front,2000-01-01,http://www.paulgraham.com/colleges.html
-083,How to Do Philosophy,2008-08-01,http://www.paulgraham.com/philosophy.html
-084,The Future of Web Startups,2007-01-01,http://www.paulgraham.com/webstartups.html
-085,Why to Move to a Startup Hub,2007-01-01,http://www.paulgraham.com/startuphubs.html
-086,Six Principles for Making New Things,1995-01-01,http://www.paulgraham.com/newthings.html
-087,Trolls,2008-08-01,http://www.paulgraham.com/trolls.html
-088,A New Venture Animal,2008-01-01,http://www.paulgraham.com/ycombinator.html
-089,You Weren't Meant to Have a Boss,2008-08-01,http://www.paulgraham.com/boss.html
-090,How to Disagree,2008-08-07,http://www.paulgraham.com/disagree.html
-091,Some Heroes,2008-01-01,http://www.paulgraham.com/heroes.html
-092,Why There Aren't More Googles,2008-04-01,http://www.paulgraham.com/googles.html
-093,Be Good,2008-08-01,http://www.paulgraham.com/good.html
-094,Lies We Tell Kids,2008-07-01,http://www.paulgraham.com/lies.html
-095,Disconnecting Distraction,2008-05-20,http://www.paulgraham.com/distraction.html
-096,Cities and Ambition,2007-01-01,http://www.paulgraham.com/cities.html
-097,The Pooled-Risk Company Management Company,2006-11-08,http://www.paulgraham.com/prcmc.html
-098,A Fundraising Survival Guide,2008-08-01,http://www.paulgraham.com/fundraising.html
-099,Why to Start a Startup in a Bad Economy,2008-10-01,http://www.paulgraham.com/badeconomy.html
-100,The Other Half of 'Artists Ship',2008-01-01,http://www.paulgraham.com/artistsship.html
-101,The High-Res Society,2006-01-01,http://www.paulgraham.com/highres.html
+Article no.,Title,Date,URL
+2,Programming Bottom-Up,,http://www.paulgraham.com/progbot.html
+5,Lisp for Web-Based Applications,2001-01-01,http://www.paulgraham.com/lwba.html
+6,Beating the Averages,2003-01-01,http://www.paulgraham.com/avg.html
+7,Java's Cover,2005-12-13,http://www.paulgraham.com/javacover.html
+8,Being Popular,2001-01-01,http://www.paulgraham.com/popular.html
+9,Five Questions about Language Design,2007-02-15,http://www.paulgraham.com/langdes.html
+10,The Roots of Lisp,2007-02-02,http://www.paulgraham.com/rootsoflisp.html
+11,The Other Road Ahead,2001-01-01,http://www.paulgraham.com/road.html
+12,What Made Lisp Different,2007-02-17,http://www.paulgraham.com/diff.html
+13,Why Arc Isn't Especially Object-Oriented,,http://www.paulgraham.com/noop.html
+14,Taste for Makers,2002-01-01,http://www.paulgraham.com/taste.html
+15,What Languages Fix,2007-02-06,http://www.paulgraham.com/fix.html
+16,Succinctness is Power,2002-01-01,http://www.paulgraham.com/power.html
+17,Revenge of the Nerds,2001-12-14,http://www.paulgraham.com/icad.html
+18,A Plan for Spam,2016-08-02,http://www.paulgraham.com/spam.html
+19,Design and Research,2003-01-01,http://www.paulgraham.com/desres.html
+20,Better Bayesian Filtering,2003-01-01,http://www.paulgraham.com/better.html
+21,Why Nerds are Unpopular,2009-03-01,http://www.paulgraham.com/nerds.html
+22,The Hundred-Year Language,2003-01-01,http://www.paulgraham.com/hundred.html
+23,If Lisp is So Great,2003-01-01,http://www.paulgraham.com/iflisp.html
+24,Hackers and Painters,2003-01-01,http://www.paulgraham.com/hp.html
+25,Filters that Fight Back,2003-11-16,http://www.paulgraham.com/ffb.html
+26,What You Can't Say,2007-08-01,http://www.paulgraham.com/say.html
+27,"The Word ""Hacker""",2004-01-01,http://www.paulgraham.com/gba.html
+28,How to Make Wealth,2006-01-26,http://www.paulgraham.com/wealth.html
+29,Mind the Gap,2002-03-01,http://www.paulgraham.com/gap.html
+30,Great Hackers,2004-09-01,http://www.paulgraham.com/gh.html
+31,The Python Paradox,2014-12-01,http://www.paulgraham.com/pypar.html
+32,The Age of the Essay,2004-01-01,http://www.paulgraham.com/essay.html
+33,What the Bubble Got Right,2004-04-30,http://www.paulgraham.com/bubble.html
+34,A Version 1.0,2004-01-01,http://www.paulgraham.com/laundry.html
+35,Bradley's Ghost,2007-01-27,http://www.paulgraham.com/polls.html
+36,"It's Charisma, Stupid",2007-02-12,http://www.paulgraham.com/charisma.html
+37,Made in USA,2004-01-01,http://www.paulgraham.com/usa.html
+38,What You'll Wish You'd Known,2005-01-01,http://www.paulgraham.com/hs.html
+39,How to Start a Startup,2005-10-21,http://www.paulgraham.com/start.html
+40,A Unified Theory of VC Suckage,2007-02-14,http://www.paulgraham.com/venturecapital.html
+41,Undergraduation,2005-01-01,http://www.paulgraham.com/college.html
+42,"Writing,  Briefly",2007-10-16,http://www.paulgraham.com/writing44.html
+43,Return of the Mac,2005-01-01,http://www.paulgraham.com/mac.html
+44,Why Smart People Have Bad Ideas,1995-01-01,http://www.paulgraham.com/bronze.html
+45,The Submarine,2005-04-19,http://www.paulgraham.com/submarine.html
+46,Hiring is Obsolete,2006-01-10,http://www.paulgraham.com/hiring.html
+47,What Business Can Learn from Open Source,2008-12-01,http://www.paulgraham.com/opensource.html
+48,After the Ladder,2006-01-11,http://www.paulgraham.com/ladder.html
+49,Inequality and Risk,2006-01-07,http://www.paulgraham.com/inequality.html
+50,What I Did this Summer,2006-01-12,http://www.paulgraham.com/sfp.html
+51,Ideas for Startups,2006-04-21,http://www.paulgraham.com/ideas.html
+52,The Venture Capital Squeeze,2007-02-05,http://www.paulgraham.com/vcsqueeze.html
+53,How to Fund a Startup,2020-03-01,http://www.paulgraham.com/startupfunding.html
+54,Web 2.0,2005-09-30,http://www.paulgraham.com/web20.html
+55,Good and Bad Procrastination,2006-02-09,http://www.paulgraham.com/procrastination.html
+56,How to Do What You Love,2006-01-31,http://www.paulgraham.com/love.html
+57,Why YC,2009-01-01,http://www.paulgraham.com/whyyc.html
+58,"6,631,372",2009-01-01,http://www.paulgraham.com/6631327.html
+59,Are Software Patents Evil?,2006-03-15,http://www.paulgraham.com/softwarepatents.html
+60,See Randomness,2009-01-01,http://www.paulgraham.com/randomness.html
+61,The Hardest Lessons for Startups to Learn,2007-01-30,http://www.paulgraham.com/startuplessons.html
+62,How to Be Silicon Valley,2006-08-02,http://www.paulgraham.com/siliconvalley.html
+63,Why Startups Condense in America,2007-02-04,http://www.paulgraham.com/america.html
+64,The Power of the Marginal,2004-03-15,http://www.paulgraham.com/marginal.html
+65,The Island Test,2006-07-21,http://www.paulgraham.com/island.html
+66,Copy What You Like,2006-01-01,http://www.paulgraham.com/copy.html
+67,How to Present to Investors,2007-01-30,http://www.paulgraham.com/investors.html
+68,A Student's Guide to Startups,2020-08-01,http://www.paulgraham.com/mit.html
+69,The 18 Mistakes That Kill Startups,2020-10-18,http://www.paulgraham.com/startupmistakes.html
+70,How Art Can Be Good,2007-01-26,http://www.paulgraham.com/goodart.html
+71,Learning from Founders,2007-01-01,http://www.paulgraham.com/foundersatwork.html
+72,Is It Worth Being Wise?,2008-08-01,http://www.paulgraham.com/wisdom.html
+73,Why to Not Not Start a Startup,2009-08-28,http://www.paulgraham.com/notnot.html
+74,Microsoft is Dead,2008-10-05,http://www.paulgraham.com/microsoft.html
+75,Two Kinds of Judgement,2020-02-01,http://www.paulgraham.com/judgement.html
+76,The Hacker's Guide to Investors,2007-02-01,http://www.paulgraham.com/guidetoinvestors.html
+77,An Alternative Theory of Unions,2007-01-01,http://www.paulgraham.com/unions.html
+78,The Equity Equation,2007-07-17,http://www.paulgraham.com/equity.html
+79,Stuff,2008-07-01,http://www.paulgraham.com/stuff.html
+80,Holding a Program in One's Head,2007-01-01,http://www.paulgraham.com/head.html
+81,How Not to Die,2007-01-01,http://www.paulgraham.com/die.html
+82,News from the Front,2007-01-01,http://www.paulgraham.com/colleges.html
+83,How to Do Philosophy,2008-08-01,http://www.paulgraham.com/philosophy.html
+84,The Future of Web Startups,2007-01-01,http://www.paulgraham.com/webstartups.html
+85,Why to Move to a Startup Hub,2007-01-01,http://www.paulgraham.com/startuphubs.html
+86,Six Principles for Making New Things,1995-01-01,http://www.paulgraham.com/newthings.html
+87,Trolls,2008-08-01,http://www.paulgraham.com/trolls.html
+88,A New Venture Animal,2013-01-01,http://www.paulgraham.com/ycombinator.html
+89,You Weren't Meant to Have a Boss,2008-08-01,http://www.paulgraham.com/boss.html
+90,How to Disagree,2009-06-07,http://www.paulgraham.com/disagree.html
+91,Some Heroes,2008-01-01,http://www.paulgraham.com/heroes.html
+92,Why There Aren't More Googles,2008-08-01,http://www.paulgraham.com/googles.html
+93,Be Good,2008-08-01,http://www.paulgraham.com/good.html
+94,Lies We Tell Kids,2008-08-01,http://www.paulgraham.com/lies.html
+95,Disconnecting Distraction,2008-05-20,http://www.paulgraham.com/distraction.html
+96,Cities and Ambition,2008-01-01,http://www.paulgraham.com/cities.html
+97,The Pooled-Risk Company Management Company,2006-11-08,http://www.paulgraham.com/prcmc.html
+98,A Fundraising Survival Guide,2008-08-01,http://www.paulgraham.com/fundraising.html
+99,Why to Start a Startup in a Bad Economy,2008-10-01,http://www.paulgraham.com/badeconomy.html
+100,"The Other Half of ""Artists Ship""",2008-01-01,http://www.paulgraham.com/artistsship.html
+101,The High-Res Society,2008-01-01,http://www.paulgraham.com/highres.html
 102,Could VC be a Casualty of the Recession?,2008-12-07,http://www.paulgraham.com/divergence.html
 103,After Credentials,2008-01-01,http://www.paulgraham.com/credentials.html
 104,Keep Your Identity Small,2006-04-18,http://www.paulgraham.com/identity.html
 105,Startups in 13 Sentences,2009-05-13,http://www.paulgraham.com/13sentences.html
-106,What I've Learned from Hacker News,2007-01-01,http://www.paulgraham.com/hackernews.html
+106,What I've Learned from Hacker News,2009-01-01,http://www.paulgraham.com/hackernews.html
 107,Can You Buy a Silicon Valley?  Maybe.,2009-01-01,http://www.paulgraham.com/maybe.html
 108,Why TV Lost,2015-03-20,http://www.paulgraham.com/convergence.html
 109,How to Be an Angel Investor,2005-01-05,http://www.paulgraham.com/angelinvesting.html
@@ -111,7 +110,7 @@ Article No., Title, Date, URL
 112,The Founder Visa,2006-11-15,http://www.paulgraham.com/foundervisa.html
 113,Why Twitter is a Big Deal,2009-04-03,http://www.paulgraham.com/twitter.html
 114,A Local Revolution?,2009-01-01,http://www.paulgraham.com/revolution.html
-115,Maker's Schedule, Manager's Schedule,2014-02-07,http://www.paulgraham.com/makersschedule.html
+115,"Maker's Schedule, Manager's Schedule",2014-02-07,http://www.paulgraham.com/makersschedule.html
 116,Ramen Profitable,2006-04-30,http://www.paulgraham.com/ramenprofitable.html
 117,The Trouble with the Segway,2009-01-01,http://www.paulgraham.com/segway.html
 118,What Kate Saw in Silicon Valley,2009-01-01,http://www.paulgraham.com/kate.html
@@ -122,11 +121,11 @@ Article No., Title, Date, URL
 123,What Startups Are Really Like,2009-11-08,http://www.paulgraham.com/really.html
 124,Apple's Mistake,1995-01-01,http://www.paulgraham.com/apple.html
 125,Organic Startup Ideas,2004-01-01,http://www.paulgraham.com/organic.html
-126,How to Lose Time and Money,1998-01-01,http://www.paulgraham.com/selfindulgence.html
+126,How to Lose Time and Money,2010-01-01,http://www.paulgraham.com/selfindulgence.html
 127,The Top Idea in Your Mind,2010-01-01,http://www.paulgraham.com/top.html
 128,The Acceleration of Addictiveness,2010-01-01,http://www.paulgraham.com/addiction.html
 129,The Future of Startup Funding,2010-01-01,http://www.paulgraham.com/future.html
-130,What Happened to Yahoo,1998-01-01,http://www.paulgraham.com/yahoo.html
+130,What Happened to Yahoo,2010-01-01,http://www.paulgraham.com/yahoo.html
 131,High Resolution Fundraising,2010-01-01,http://www.paulgraham.com/hiresfund.html
 132,Where to See Silicon Valley,2010-01-01,http://www.paulgraham.com/seesv.html
 133,The New Funding Landscape,2010-01-01,http://www.paulgraham.com/superangels.html
@@ -136,18 +135,18 @@ Article No., Title, Date, URL
 137,Subject: Airbnb,2011-03-01,http://www.paulgraham.com/airbnb.html
 138,The Patent Pledge,2011-04-27,http://www.paulgraham.com/patentpledge.html
 139,Why Startup Hubs Work,2004-01-01,http://www.paulgraham.com/hubs.html
-140,Snapshot: Viaweb, June 1998,1998-01-01,http://www.paulgraham.com/vw.html
-141,Schlep Blindness,1995-01-01,http://www.paulgraham.com/schlep.html
+140,"Snapshot: Viaweb, June 1998",1998-01-01,http://www.paulgraham.com/vw.html
+141,Schlep Blindness,2012-01-01,http://www.paulgraham.com/schlep.html
 142,A Word to the Resourceful,2012-01-01,http://www.paulgraham.com/word.html
-143,Frighteningly Ambitious Startup Ideas,2002-01-01,http://www.paulgraham.com/ambitious.html
+143,Frighteningly Ambitious Startup Ideas,2012-01-01,http://www.paulgraham.com/ambitious.html
 144,Defining Property,2012-01-01,http://www.paulgraham.com/property.html
-145,How Y Combinator Started,2005-01-01,http://www.paulgraham.com/ycstart.html
+145,How Y Combinator Started,2012-01-01,http://www.paulgraham.com/ycstart.html
 146,Writing and Speaking,2012-01-01,http://www.paulgraham.com/speak.html
 147,The Top of My Todo List,2012-01-01,http://www.paulgraham.com/todo.html
-148,Black Swan Farming,2010-01-01,http://www.paulgraham.com/swan.html
+148,Black Swan Farming,2012-01-01,http://www.paulgraham.com/swan.html
 149,Startup = Growth,2012-01-01,http://www.paulgraham.com/growth.html
 150,The Hardware Renaissance,2012-05-11,http://www.paulgraham.com/hw.html
-151,How to Get Startup Ideas,1995-01-01,http://www.paulgraham.com/startupideas.html
+151,How to Get Startup Ideas,2012-01-01,http://www.paulgraham.com/startupideas.html
 152,Startup Investing Trends,2013-01-01,http://www.paulgraham.com/invtrend.html
 153,Do Things that Don't Scale,2013-07-25,http://www.paulgraham.com/ds.html
 154,How to Convince Investors,2013-01-01,http://www.paulgraham.com/convince.html
@@ -169,10 +168,10 @@ Article No., Title, Date, URL
 170,Write Like You Talk,2020-01-01,http://www.paulgraham.com/talk.html
 171,A Way to Detect Bias,2020-09-10,http://www.paulgraham.com/bias.html
 172,Jessica Livingston,2015-01-01,http://www.paulgraham.com/jessica.html
-173,The Refragmentation,2014-09-01,http://www.paulgraham.com/re.html
+173,The Refragmentation,2016-04-01,http://www.paulgraham.com/re.html
 174,Economic Inequality,2015-04-28,http://www.paulgraham.com/ineq.html
 175,Life is Short,2016-01-01,http://www.paulgraham.com/vb.html
-176,How to Make Pittsburgh a Startup Hub,2016-03-16,http://www.paulgraham.com/pgh.html
+176,How to Make Pittsburgh a Startup Hub,2016-04-06,http://www.paulgraham.com/pgh.html
 177,The Risk of Discovery,2017-01-01,http://www.paulgraham.com/disc.html
 178,Charisma / Power,2017-01-01,http://www.paulgraham.com/pow.html
 179,General and Surprising,2017-01-01,http://www.paulgraham.com/sun.html
@@ -187,19 +186,19 @@ Article No., Title, Date, URL
 188,How to Write Usefully,2020-01-01,http://www.paulgraham.com/useful.html
 189,Coronavirus and Credibility,2020-01-01,http://www.paulgraham.com/cred.html
 190,Orthodox Privilege,2020-01-01,http://www.paulgraham.com/orth.html
-191,The Four Quadrants of Conformism,2000-01-01,http://www.paulgraham.com/conformism.html
+191,The Four Quadrants of Conformism,2020-01-01,http://www.paulgraham.com/conformism.html
 192,Modeling a Wealth Tax,2020-01-01,http://www.paulgraham.com/wtax.html
 193,Early Work,2020-01-01,http://www.paulgraham.com/early.html
 194,How to Think for Yourself,2020-01-01,http://www.paulgraham.com/think.html
-195,The Airbnbs,2008-01-01,http://www.paulgraham.com/airbnbs.html
+195,The Airbnbs,2020-01-01,http://www.paulgraham.com/airbnbs.html
 196,Billionaires Build,2020-01-01,http://www.paulgraham.com/ace.html
 197,Earnestness,2020-01-01,http://www.paulgraham.com/earnest.html
-198,What I Worked On,1996-01-01,http://www.paulgraham.com/worked.html
+198,What I Worked On,2019-01-01,http://www.paulgraham.com/worked.html
 199,Donate Unrestricted,2021-01-01,http://www.paulgraham.com/donate.html
 200,Write Simply,2021-01-01,http://www.paulgraham.com/simply.html
-201,How People Get Rich Now,2008-01-01,http://www.paulgraham.com/richnow.html
-202,The Real Reason to End the Death Penalty,2009-09-07,http://www.paulgraham.com/real.html
-203,An NFT That Saves Lives,2000-01-01,http://www.paulgraham.com/nft.html
+201,How People Get Rich Now,2020-01-01,http://www.paulgraham.com/richnow.html
+202,The Real Reason to End the Death Penalty,2019-12-29,http://www.paulgraham.com/real.html
+203,An NFT That Saves Lives,2021-01-01,http://www.paulgraham.com/nft.html
 204,Crazy New Ideas,2021-01-01,http://www.paulgraham.com/newideas.html
 205,Fierce Nerds,2021-01-01,http://www.paulgraham.com/fn.html
 206,A Project of One's Own,2021-01-01,http://www.paulgraham.com/own.html
