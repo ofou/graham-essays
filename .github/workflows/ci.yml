@@ -26,7 +26,6 @@ jobs:
           files: |
             *.epub
             *.mobi
-            *.csv
 
       - name: Install dependencies
         run: |
