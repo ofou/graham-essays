@@ -16,6 +16,10 @@ jobs:
     runs-on: "macos-latest"
 
     steps:
+      - name: Set current date as env variable
+        run: echo "NOW::$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+      - name: Echo current date
+        run: echo $NOW
       - name: "Build & test"
         run: |
           make dependencies
@@ -26,7 +30,7 @@ jobs:
           repo_token: "${{ secrets.GRAHAM_ESSAYS }}"
           automatic_release_tag: "latest"
           prerelease: true
-          tag: ${{ date +'%Y-%m-%d' }}
+          tag: ${{ $NOW }}
           title: "Paul Graham Essays"
           files: |
             *.epub
