@@ -26,7 +26,7 @@ jobs:
           repo_token: "${{ secrets.GRAHAM_ESSAYS }}"
           automatic_release_tag: "latest"
           prerelease: true
-          tag: ${{ echo "$(date +'%Y-%m-%d')" }}
+          tag: ${{ date +'%Y-%m-%d' }}
           title: "Paul Graham Essays"
           files: |
             *.epub
