@@ -12,14 +12,14 @@ on:
 jobs:
   build:
     name: "EPUB & MOBI"
-    runs-on: macos-latest
+    runs-on: "macos-latest"
 
     steps:
       - uses: actions/checkout@v2
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GRAHAM_ESSAYS }}"
-          automatic_release_tag: "latest"
+          automatic_release_tag: ${{ github.event.repository.updated_at }}
           prerelease: true
           tag: ${{ github.event.repository.updated_at }}
           title: "Paul Graham Essays"
