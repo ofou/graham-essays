@@ -21,7 +21,6 @@ jobs:
           repo_token: "${{ secrets.GRAHAM_ESSAYS }}"
           automatic_release_tag: ${{ github.event.repository.updated_at }}
           prerelease: true
-          tag: ${{ github.event.repository.updated_at }}
           title: "Paul Graham Essays"
           files: |
             *.epub
