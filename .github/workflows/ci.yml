@@ -1,5 +1,5 @@
 ---
-name: "pre-release"
+name: "EPUB & MOBI files"
 
 on:
   push:
@@ -20,11 +20,11 @@ jobs:
         with:
           repo_token: "${{ secrets.GRAHAM_ESSAYS }}"
           automatic_release_tag: "latest"
-          prerelease: true
           title: "Paul Graham Essays"
           files: |
             *.epub
             *.mobi
+            *.csv
 
       - name: Install dependencies
         run: |
