@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 .SILENT: dependencies clean venv fetch merge epub words count mobi
 
-all:  	clean venv fetch merge epub mobi
+all:  	clean venv fetch merge epub mobi pdf
 
 clean: 
 		@echo "🗑 Cleaning up the room..."
@@ -43,3 +43,9 @@ mobi:
 		@echo "📒 Binding MOBI... "
 		ebook-convert graham.epub graham.mobi
 		@echo "🎉 MOBI file created."
+
+pdf:
+		${epub}
+		@echo "📒 Binding PDF... "
+		ebook-convert graham.epub graham.pdf
+		@echo "🎉 PDF file created."
