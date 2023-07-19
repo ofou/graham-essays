@@ -28,9 +28,40 @@ if ART_NO == 1:
     if os.path.isfile(FILE):
         os.remove(FILE)
 
+
+def update_links_in_md(joined):
+
+    matches = re.findall(b"\[\d+\]", joined)
+
+    if not matches:
+        return joined
+
+    for match in set(matches):
+
+        def update_links(match):
+            counter[0] += 1
+            note_name = f"{title}_note{note_number}"
+            if counter[0] == 1:
+                return bytes(f"[{note_number}](#{note_name})", 'utf-8')
+            elif counter[0] == 2:
+                return bytes(f"<a name={note_name}>[{note_number}]</a>", 'utf-8')
+
+
+        counter = [0]
+
+        note_number = int(match.decode().strip("[]"))
+        match_regex = match.replace(b"[", b"\[").replace(b"]", b"\]")
+        
+        joined = re.sub(match_regex, update_links, joined)
+
+    
+    return joined
+
+
 for entry in reversed(rss.entries):
     URL = entry['link']
     TITLE = entry['title']
+
 
     try:
         with urllib.request.urlopen(URL) as website:
@@ -46,7 +77,10 @@ for entry in reversed(rss.entries):
                           if re.match(r"^[\p{Z}\s]*(?:[^\p{Z}\s][\p{Z}\s]*){5,100}$", p)
                           else "\n"+p+"\n") for p in parsed.split("\n")]
 
-                file.write(" ".join(parsed).encode())
+                encoded = " ".join(parsed).encode()
+                update_with_links = update_links_in_md(encoded)
+                file.write(update_with_links)
+
                 print(f"✅ {ART_NO:03} {TITLE}")
 
                 with open(FILE, 'a+', newline='\n') as f:
