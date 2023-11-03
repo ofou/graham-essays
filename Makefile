@@ -56,6 +56,6 @@ dependencies:
 wordcount:
 	@echo "📊 Counting words..."
 	@echo "Total words: "
-	@cat essays/*.md | wc -w | numfmt --to=si
+	@cat essays/*.md | wc -w
 	@echo "Total articles: "
 	@ls essays/*.md | wc -l
