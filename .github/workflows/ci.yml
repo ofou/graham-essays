@@ -26,10 +26,6 @@ jobs:
             *.mobi
             *.csv
 
-      - name: Install dependencies
-        run: |
-          make dependencies
-
       - name: Run
         run: |
           mkdir essays

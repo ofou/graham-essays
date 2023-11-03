@@ -12,11 +12,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Installing pandoc and calibre
+      - name: Testing on ubuntu-latest
         run: |
-          sudo apt install pandoc -y
-          sudo apt install calibre -y
-          pip install --upgrade chardet
-      - name: Running app
-        run: |
-          make clean venv fetch merge epub
+          make all
