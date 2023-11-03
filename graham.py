@@ -30,7 +30,6 @@ if ART_NO == 1:
 
 
 def update_links_in_md(joined):
-
     matches = re.findall(b"\[\d+\]", joined)
 
     if not matches:
@@ -42,40 +41,42 @@ def update_links_in_md(joined):
             counter[0] += 1
             note_name = f"{title}_note{note_number}"
             if counter[0] == 1:
-                return bytes(f"[{note_number}](#{note_name})", 'utf-8')
+                return bytes(f"[{note_number}](#{note_name})", "utf-8")
             elif counter[0] == 2:
-                return bytes(f"<a name={note_name}>[{note_number}]</a>", 'utf-8')
-
+                return bytes(f"<a name={note_name}>[{note_number}]</a>", "utf-8")
 
         counter = [0]
 
         note_number = int(match.decode().strip("[]"))
         match_regex = match.replace(b"[", b"\[").replace(b"]", b"\]")
-        
+
         joined = re.sub(match_regex, update_links, joined)
 
-    
     return joined
 
 
 for entry in reversed(rss.entries):
-    URL = entry['link']
-    TITLE = entry['title']
-
+    URL = entry["link"]
+    TITLE = entry["title"]
 
     try:
         with urllib.request.urlopen(URL) as website:
-            content = website.read().decode('unicode_escape', "utf-8")
+            content = website.read().decode("unicode_escape", "utf-8")
             parsed = h.handle(content)
             title = "_".join(TITLE.split(" ")).lower()
-            title = re.sub(r'[\W\s]+', '', title)
-            with open(f"./essays/{ART_NO:03}_{title}.md", 'wb+') as file:
+            title = re.sub(r"[\W\s]+", "", title)
+            with open(f"./essays/{ART_NO:03}_{title}.md", "wb+") as file:
                 file.write(f"# {ART_NO:03} {TITLE}\n\n".encode())
                 parsed = parsed.replace("[](index.html)  \n  \n", "")
 
-                parsed = [(p.replace("\n", " ")
-                          if re.match(r"^[\p{Z}\s]*(?:[^\p{Z}\s][\p{Z}\s]*){5,100}$", p)
-                          else "\n"+p+"\n") for p in parsed.split("\n")]
+                parsed = [
+                    (
+                        p.replace("\n", " ")
+                        if re.match(r"^[\p{Z}\s]*(?:[^\p{Z}\s][\p{Z}\s]*){5,100}$", p)
+                        else "\n" + p + "\n"
+                    )
+                    for p in parsed.split("\n")
+                ]
 
                 encoded = " ".join(parsed).encode()
                 update_with_links = update_links_in_md(encoded)
@@ -83,25 +84,19 @@ for entry in reversed(rss.entries):
 
                 print(f"✅ {ART_NO:03} {TITLE}")
 
-                with open(FILE, 'a+', newline='\n') as f:
+                with open(FILE, "a+", newline="\n") as f:
                     csvwriter = csv.writer(
-                        f,
-                        quoting=csv.QUOTE_MINIMAL,
-                        delimiter=',',
-                        quotechar='"')
+                        f, quoting=csv.QUOTE_MINIMAL, delimiter=",", quotechar='"'
+                    )
 
                     if ART_NO == 1:
                         fieldnames = ["Article no.", "Title", "Date", "URL"]
-                        csvwriter = csv.DictWriter(
-                            f, fieldnames=fieldnames)
+                        csvwriter = csv.DictWriter(f, fieldnames=fieldnames)
                         csvwriter.writeheader()
 
-                    DATE = find_date(entry['link'])
+                    DATE = find_date(entry["link"])
 
-                    line = [ART_NO,
-                            TITLE,
-                            DATE,
-                            URL]
+                    line = [ART_NO, TITLE, DATE, URL]
 
                     csvwriter.writerow(line)
 
