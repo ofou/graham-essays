@@ -13,7 +13,7 @@ Download the _complete collection_ of [+200](essays.csv) essays from [Paul Graha
 
 ## Dependencies for MacOS
 
-You should have installed [brew] in order to install the dependencies listed in the Makefile.
+You need [brew] in order to install the dependencies listed in the Makefile.
 
 ## Usage
 
