@@ -1,4 +1,4 @@
-name: "EPUB & PDF files"
+name: "Pre Release"
 
 on:
   push:
@@ -10,22 +10,22 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: "EPUB & PDF"
+  pre-release:
+    name: "Pre Release"
     runs-on: "ubuntu-latest"
 
     steps:
-    - uses: actions/checkout@v2
+      - name: "Build"
+        run: |
+          make all
 
-    - name: Build
-      run: make all
-
-    - uses: "marvinpinto/action-automatic-releases@latest"
-      with:
-        automatic_release_tag: "latest"
-        repo_token: "${{ secrets.GRAHAM_ESSAYS }}"
-        title: "Paul Graham Essays"
-        files: |
-          *.epub
-          *.pdf
-          *.csv
+      - uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GRAHAM_ESSAYS }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Paul Graham Essays"
+          files: |
+            *.epub
+            *.pdf
+            *.csv
