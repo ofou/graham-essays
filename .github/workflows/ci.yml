@@ -1,5 +1,4 @@
----
-name: "EPUB & MOBI files"
+name: "EPUB & PDF files"
 
 on:
   push:
@@ -7,26 +6,24 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * *" # Run every day at midnight UTC
 
 jobs:
   build:
-    name: "EPUB & MOBI"
-    runs-on: "macos-latest"
+    name: "EPUB & PDF"
+    runs-on: "ubuntu-latest"
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GRAHAM_ESSAYS }}"
-          automatic_release_tag: "latest"
-          title: "Paul Graham Essays"
-          files: |
-            *.epub
-            *.mobi
-            *.csv
+    - uses: actions/checkout@v2
 
-      - name: Run
-        run: |
-          mkdir essays
-          make all
+    - name: Build
+      run: make all
+
+    - uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GRAHAM_ESSAYS }}"
+        title: "Paul Graham Essays"
+        files: |
+          *.epub
+          *.pdf
+          *.csv
