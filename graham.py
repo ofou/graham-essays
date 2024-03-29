@@ -61,7 +61,7 @@ for entry in reversed(rss.entries):
 
     try:
         with urllib.request.urlopen(URL) as website:
-            content = website.read().decode("unicode_escape", "utf-8")
+            content = website.read().decode(r"unicode_escape", "utf-8")
             parsed = h.handle(content)
             title = "_".join(TITLE.split(" ")).lower()
             title = re.sub(r"[\W\s]+", "", title)
