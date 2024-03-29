@@ -49,7 +49,7 @@ pdf: epub
 
 dependencies:
 	if [ "$(UNAME_S)" = "Darwin" ]; then \
-		$(PKG_MANAGER) install python@3.10 pandoc calibre || true; \
+		$(PKG_MANAGER) install python@3.12 pandoc calibre || true; \
 	else \
 		sudo apt update && sudo apt install -y python3-pip python3-venv pandoc calibre; \
 	fi
