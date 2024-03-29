@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: "Build"
         run: |
-          make all
+          make
 
       - uses: marvinpinto/action-automatic-releases@latest
         with:
