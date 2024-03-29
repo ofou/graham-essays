@@ -10,14 +10,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  pre-release:
-    name: "Pre Release"
-    runs-on: "ubuntu-latest"
+  build:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: "Build"
+      - uses: actions/checkout@v2
+      - name: Run
         run: |
-          make
+          make all
 
       - uses: marvinpinto/action-automatic-releases@latest
         with:
