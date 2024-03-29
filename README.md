@@ -9,11 +9,11 @@
 
 **Check out the [releases page] for the latest build, updated daily.**
 
-Download the _complete collection_ of [+200](essays.csv) essays from [Paul Graham] website and export them in [EPUB], and Markdown for easy [AFK] reading. It turned out to be a whooping +500k words. I used the RSS originally made by [Aaron Swartz] [shared] by PG himself, `feedparser`, `html2text`, `htmldate` and `Unidecode` libraries for data cleaning and acquisition. 
+Download the _complete collection_ of +200[list] essays from [Paul Graham] website and export them in [EPUB], and Markdown for easy [AFK] reading. It turned out to be a whooping +500k words. I used the RSS originally made by [Aaron Swartz] [shared] by PG himself, `feedparser`, `html2text`, `htmldate` and `Unidecode` libraries for data cleaning and acquisition. 
 
 ## Dependencies for MacOS
 
-You need [brew] in order to install the dependencies listed in the Makefile.
+On macOS you need [brew] in order to install the dependencies listed in the Makefile.
 
 ## Usage
 
@@ -25,7 +25,7 @@ make
 
 ### Current Essays
 
-Here's a [list](./essays.csv) of the current essays included.
+Here's a [list] of the current essays included, and an [EPUB].
 
 ---
 
@@ -40,3 +40,4 @@ _If you have any ideas, suggestions, curses or feedback in order to improve the 
 [EPUB]: https://github.com/ofou/graham-essays/releases/download/latest/graham.epub
 [releases page]: https://github.com/ofou/graham-essays/releases/tag/latest
 [shared]: http://www.paulgraham.com/rss.html
+[list]: https://github.com/ofou/graham-essays/releases/download/latest/essays.csv
