@@ -57,6 +57,8 @@ def update_links_in_md(joined):
 
 for entry in reversed(rss.entries):
     URL = entry["link"]
+    if "http://www.paulgraham.com/https://" in URL:
+        URL = URL.replace("http://www.paulgraham.com/https://", "https://")
     TITLE = entry["title"]
 
     try:
@@ -93,8 +95,6 @@ for entry in reversed(rss.entries):
                         fieldnames = ["Article no.", "Title", "Date", "URL"]
                         csvwriter = csv.DictWriter(f, fieldnames=fieldnames)
                         csvwriter.writeheader()
-
-                    DATE = find_date(entry["link"])
 
                     line = [ART_NO, TITLE, DATE, URL]
 
