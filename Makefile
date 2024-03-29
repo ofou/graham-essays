@@ -2,14 +2,15 @@ SHELL := /bin/bash
 
 .SILENT: clean venv fetch merge epub pdf
 
-# Define OS-specific package manager and virtual environment activation command
 UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Linux)
-	PKG_MANAGER := apt
-	VENV_ACTIVATE := . ./.venv/bin/activate
+ifeq ($(UNAME_S),Darwin)
+PKG_MANAGER := brew
+VENV_ACTIVATE := source .venv/bin/activate
+else ifeq ($(UNAME_S),Linux)
+PKG_MANAGER := apt
+VENV_ACTIVATE := . ./.venv/bin/activate
 else
-	PKG_MANAGER := brew
-	VENV_ACTIVATE := . ./.venv/bin/activate
+$(error Unsupported operating system: $(UNAME_S))
 endif
 
 all: dependencies clean venv fetch merge epub wordcount
