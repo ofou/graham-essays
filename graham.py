@@ -30,7 +30,7 @@ if ART_NO == 1:
 
 
 def update_links_in_md(joined):
-    matches = re.findall(b"\[\d+\]", joined)
+    matches = re.findall(r"\[\d+\]", joined)
 
     if not matches:
         return joined
@@ -48,7 +48,7 @@ def update_links_in_md(joined):
         counter = [0]
 
         note_number = int(match.decode().strip("[]"))
-        match_regex = match.replace(b"[", b"\[").replace(b"]", b"\]")
+        match_regex = match.replace(b"[", b"\\[").replace(b"]", b"\\]")
 
         joined = re.sub(match_regex, update_links, joined)
 
@@ -61,7 +61,7 @@ for entry in reversed(rss.entries):
 
     try:
         with urllib.request.urlopen(URL) as website:
-            content = website.read().decode(r"unicode_escape", "utf-8")
+            content = website.read().decode("utf-8")
             parsed = h.handle(content)
             title = "_".join(TITLE.split(" ")).lower()
             title = re.sub(r"[\W\s]+", "", title)

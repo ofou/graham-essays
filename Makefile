@@ -30,7 +30,7 @@ venv:
 	@echo "🐍 Creating a safe place for a Python... "
 	mkdir -p essays
 	python3 -m venv .venv
-	$(VENV_ACTIVATE) && pip3 install --upgrade pip
+	$(VENV_ACTIVATE) && pip3 install --upgrade pip setuptools
 	$(VENV_ACTIVATE) && pip3 install -r requirements.txt
 
 fetch:
@@ -49,7 +49,7 @@ pdf: epub
 
 dependencies:
 	if [ "$(UNAME_S)" = "Darwin" ]; then \
-		$(PKG_MANAGER) install python@3.12 pandoc calibre || true; \
+		$(PKG_MANAGER) install python pandoc calibre || true; \
 	else \
 		sudo apt update && sudo apt install -y python3-pip python3-venv pandoc calibre; \
 	fi
