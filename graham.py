@@ -96,6 +96,8 @@ for entry in reversed(rss.entries):
                         csvwriter = csv.DictWriter(f, fieldnames=fieldnames)
                         csvwriter.writeheader()
 
+                    DATE = find_date(entry["link"])
+
                     line = [ART_NO, TITLE, DATE, URL]
 
                     csvwriter.writerow(line)
