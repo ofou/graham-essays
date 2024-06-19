@@ -1,3 +1,4 @@
+beautifulsoup4
 certifi
 charset-normalizer
 cssutils

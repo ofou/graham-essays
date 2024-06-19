@@ -1,6 +1,7 @@
 from asyncio.log import logger
 import feedparser
 import urllib.request
+from urllib.parse import urljoin
 import time
 import os.path
 import html2text
@@ -8,12 +9,13 @@ import unidecode
 import regex as re
 from htmldate import find_date
 import csv
+import requests
+from bs4 import BeautifulSoup
 
 """
 Download a collection of Paul Graham essays in EPUB & Markdown.
 """
 
-rss = feedparser.parse("http://www.aaronsw.com/2002/feeds/pgessays.rss")
 h = html2text.HTML2Text()
 h.ignore_images = True
 h.ignore_tables = True
@@ -27,6 +29,33 @@ FILE = "./essays.csv"
 if ART_NO == 1:
     if os.path.isfile(FILE):
         os.remove(FILE)
+
+
+def parse_main_page(base_url: str, articles_url: str):
+    assert base_url.endswith("/"), f"Base URL must end with a slash: {base_url}"
+    response = requests.get(base_url + articles_url)
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    # Find all relevant 'td' elements
+    td_cells = soup.select("table > tr > td > table > tr > td")
+    chapter_links = []
+
+    for td in td_cells:
+        # use the heuristic that page links are an <a> inside a <font> with a small (bullet) image alongside
+        img = td.find("img")
+        if img and int(img.get("width", 0)) <= 15 and int(img.get("height", 0)) <= 15:
+            a_tag = td.find("font").find("a") if td.find("font") else None
+            if a_tag:
+                chapter_links.append(
+                    {"link": urljoin(base_url, a_tag["href"]), "title": a_tag.text}
+                )
+
+    return chapter_links
+
+
+# rss = feedparser.parse("http://www.aaronsw.com/2002/feeds/pgessays.rss")
+# toc = reversed(rss.entries)
+toc = reversed(parse_main_page("https://paulgraham.com/", "articles.html"))
 
 
 def update_links_in_md(joined):
@@ -55,7 +84,7 @@ def update_links_in_md(joined):
     return joined
 
 
-for entry in reversed(rss.entries):
+for entry in toc:
     URL = entry["link"]
     if "http://www.paulgraham.com/https://" in URL:
         URL = URL.replace("http://www.paulgraham.com/https://", "https://")
