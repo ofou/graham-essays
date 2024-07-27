@@ -1,4 +1,4 @@
-name: "Pre Release"
+name: "Pre Release on File Change"
 
 on:
   push:
@@ -10,16 +10,31 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  check_and_build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - name: Run
+        with:
+          fetch-depth: 2  # To be able to get the changes
+
+      - name: Check for file changes
+        id: check_files
+        run: |
+          if git diff --name-only HEAD^ HEAD | grep -E '\.(epub|pdf|csv)$'; then
+            echo "changes_detected=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes_detected=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run build if changes detected
+        if: steps.check_files.outputs.changes_detected == 'true'
         run: |
           make all
 
-      - uses: marvinpinto/action-automatic-releases@latest
+      - name: Create release if changes detected
+        if: steps.check_files.outputs.changes_detected == 'true'
+        uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
