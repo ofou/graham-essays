@@ -1,4 +1,8 @@
-name: "Pre Release on File Change"
+name: "Build and Release"
+
+permissions:
+  contents: write # Needed for creating releases
+  pull-requests: read
 
 on:
   push:
@@ -6,41 +10,84 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: "0 0 * * *" # Run every day at midnight UTC
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
-  check_and_build:
+  build:
     runs-on: ubuntu-latest
-
+    outputs:
+      changes_detected: ${{ steps.check_files.outputs.changes_detected }}
+      num_articles: ${{ steps.count_articles.outputs.num_articles }}
+    
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 2  # To be able to get the changes
+          fetch-depth: 2
 
       - name: Check for file changes
         id: check_files
         run: |
-          if git diff --name-only HEAD^ HEAD | grep -E '\.(epub|pdf|csv)$'; then
+          if git diff --name-only HEAD^ HEAD | grep -E '\.(epub|csv)$'; then
             echo "changes_detected=true" >> $GITHUB_OUTPUT
           else
-            echo "changes_detected=false" >> $GITHUB_OUTPUT
+            echo "changes_detected=true" >> $GITHUB_OUTPUT  # Always build for now
           fi
 
-      - name: Run build if changes detected
-        if: steps.check_files.outputs.changes_detected == 'true'
+      - name: Build
         run: |
           make all
 
-      - name: Create release if changes detected
-        if: steps.check_files.outputs.changes_detected == 'true'
+      - name: Count number of articles
+        id: count_articles
+        run: |
+          if [ -f "essays.csv" ]; then
+            NUM_ARTICLES=$(( $(wc -l < essays.csv) - 1 ))
+            NUM_ARTICLES=$(( NUM_ARTICLES < 0 ? 0 : NUM_ARTICLES ))
+            echo "num_articles=$NUM_ARTICLES" >> $GITHUB_OUTPUT
+          else
+            echo "num_articles=0" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            dist/
+            *.epub
+            essays.csv
+          retention-days: 30
+          if-no-files-found: error
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: needs.build.outputs.changes_detected == 'true'
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist
+
+      - name: Generate version string
+        id: generate_version
+        working-directory: dist
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          VERSION="${DATE}_${{ needs.build.outputs.num_articles }}"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "RELEASE_TITLE=$DATE, ${{ needs.build.outputs.num_articles }} essays" >> $GITHUB_ENV
+
+      - name: Create release
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Paul Graham Essays"
+          automatic_release_tag: "${{ env.VERSION }}"
+          prerelease: false
+          title: "${{ env.RELEASE_TITLE }}"
           files: |
-            *.epub
-            *.pdf
-            *.csv
+            dist/*.epub
+            dist/essays.csv
