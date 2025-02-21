@@ -1,5 +1,9 @@
 name: "Build and Release"
 
+permissions:
+  contents: write # Needed for creating releases
+  pull-requests: read
+
 on:
   push:
     branches: [main]
@@ -17,7 +21,7 @@ jobs:
       num_articles: ${{ steps.count_articles.outputs.num_articles }}
     
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
@@ -76,7 +80,7 @@ jobs:
           DATE=$(date +%Y-%m-%d)
           VERSION="${DATE}_${{ needs.build.outputs.num_articles }}"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "RELEASE_TITLE=Paul Graham Essays ($DATE, ${{ needs.build.outputs.num_articles }} essays)" >> $GITHUB_ENV
+          echo "RELEASE_TITLE=$DATE, ${{ needs.build.outputs.num_articles }} essays" >> $GITHUB_ENV
 
       - name: Create release
         uses: marvinpinto/action-automatic-releases@latest
