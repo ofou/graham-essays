@@ -46,13 +46,16 @@ jobs:
           fi
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: |
+            dist/
             *.epub
             *.pdf
             essays.csv
+          retention-days: 30
+          if-no-files-found: error
 
   release:
     needs: build
@@ -61,12 +64,14 @@ jobs:
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: build-artifacts
+          path: dist
 
       - name: Generate version string
         id: generate_version
+        working-directory: dist
         run: |
           DATE=$(date +%Y-%m-%d)
           VERSION="${DATE}_${{ needs.build.outputs.num_articles }}"
@@ -81,6 +86,6 @@ jobs:
           prerelease: false
           title: "${{ env.RELEASE_TITLE }}"
           files: |
-            *.epub
-            *.pdf
-            essays.csv
+            dist/*.epub
+            dist/*.pdf
+            dist/essays.csv
