@@ -1,4 +1,4 @@
-name: "Release"
+name: "Build and Release"
 
 on:
   push:
@@ -6,66 +6,79 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: "0 0 * * *" # Run every day at midnight UTC
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
-  check_and_build:
+  build:
     runs-on: ubuntu-latest
-
+    outputs:
+      changes_detected: ${{ steps.check_files.outputs.changes_detected }}
+      num_articles: ${{ steps.count_articles.outputs.num_articles }}
+    
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 2  # To allow checking changes between commits
+          fetch-depth: 2
 
       - name: Check for file changes
         id: check_files
         run: |
-          # Check if any .epub, .pdf, or .csv files changed
           if git diff --name-only HEAD^ HEAD | grep -E '\.(epub|pdf|csv)$'; then
             echo "changes_detected=true" >> $GITHUB_OUTPUT
           else
-            echo "changes_detected=false" >> $GITHUB_OUTPUT
+            echo "changes_detected=true" >> $GITHUB_OUTPUT  # Always build for now
           fi
 
-      - name: Run build if changes detected
-        if: steps.check_files.outputs.changes_detected == 'true'
+      - name: Build
         run: |
           make all
 
       - name: Count number of articles
-        if: steps.check_files.outputs.changes_detected == 'true'
         id: count_articles
         run: |
-          # Check if essays.csv exists, then count articles (rows - header)
           if [ -f "essays.csv" ]; then
             NUM_ARTICLES=$(( $(wc -l < essays.csv) - 1 ))
-            # Ensure count is at least 0
             NUM_ARTICLES=$(( NUM_ARTICLES < 0 ? 0 : NUM_ARTICLES ))
-            echo "NUM_ARTICLES=$NUM_ARTICLES" >> $GITHUB_ENV
+            echo "num_articles=$NUM_ARTICLES" >> $GITHUB_OUTPUT
           else
-            echo "NUM_ARTICLES=0" >> $GITHUB_ENV
+            echo "num_articles=0" >> $GITHUB_OUTPUT
           fi
 
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: |
+            *.epub
+            *.pdf
+            essays.csv
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: needs.build.outputs.changes_detected == 'true'
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
+
       - name: Generate version string
-        if: steps.check_files.outputs.changes_detected == 'true'
         id: generate_version
         run: |
-          # Get current date in YYYY-MM-DD format
           DATE=$(date +%Y-%m-%d)
-          # Generate version string
-          VERSION="${DATE}_${{ env.NUM_ARTICLES }}"
+          VERSION="${DATE}_${{ needs.build.outputs.num_articles }}"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-          # Set release title
-          echo "RELEASE_TITLE=Paul Graham Essays ($DATE, ${{ env.NUM_ARTICLES }} essays)" >> $GITHUB_ENV
+          echo "RELEASE_TITLE=Paul Graham Essays ($DATE, ${{ needs.build.outputs.num_articles }} essays)" >> $GITHUB_ENV
 
-      - name: Create release if changes detected
-        if: steps.check_files.outputs.changes_detected == 'true'
+      - name: Create release
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "${{ env.VERSION }}"
-          prerelease: false  # Creates a full release, not a pre-release
+          prerelease: false
           title: "${{ env.RELEASE_TITLE }}"
           files: |
             *.epub
