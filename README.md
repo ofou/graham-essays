@@ -38,6 +38,6 @@ _If you have any ideas, suggestions, curses or feedback in order to improve the 
 [pandoc]: https://pandoc.org/installing.html
 [calibre]: https://calibre-ebook.com/
 [EPUB]: https://github.com/ofou/graham-essays/releases/download/latest/graham.epub
-[releases page]: https://github.com/ofou/graham-essays/releases/tag/latest
+[releases page]: https://github.com/ofou/graham-essays/releases
 [shared]: http://www.paulgraham.com/rss.html
 [list]: https://github.com/ofou/graham-essays/releases/download/latest/essays.csv
