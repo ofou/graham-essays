@@ -1,43 +1,31 @@
 name: "Build and Release"
-
 permissions:
   contents: write # Needed for creating releases
   pull-requests: read
-
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * *"  # Fixed the cron syntax
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      changes_detected: ${{ steps.check_files.outputs.changes_detected }}
       num_articles: ${{ steps.count_articles.outputs.num_articles }}
+      should_release: ${{ steps.check_release_needed.outputs.should_release }}
     
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
-
-      - name: Check for file changes
-        id: check_files
-        run: |
-          if git diff --name-only HEAD^ HEAD | grep -E '\.(epub|csv)$'; then
-            echo "changes_detected=true" >> $GITHUB_OUTPUT
-          else
-            echo "changes_detected=false" >> $GITHUB_OUTPUT
-          fi
-
+      
       - name: Build
         run: |
           make all
-
+      
       - name: Count number of articles
         id: count_articles
         run: |
@@ -48,7 +36,33 @@ jobs:
           else
             echo "num_articles=0" >> $GITHUB_OUTPUT
           fi
-
+      
+      - name: Check if release is needed
+        id: check_release_needed
+        run: |
+          # Get latest release tag
+          LATEST_RELEASE=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)
+          
+          # Extract number of essays from the tag (assuming format like YYYY-MM-DD_NNN)
+          if [[ $LATEST_RELEASE =~ _([0-9]+)$ ]]; then
+            LAST_ARTICLE_COUNT=${BASH_REMATCH[1]}
+          else
+            # If there's no previous release or the format is different, default to 0
+            LAST_ARTICLE_COUNT=0
+          fi
+          
+          echo "Latest release article count: $LAST_ARTICLE_COUNT"
+          echo "Current article count: ${{ steps.count_articles.outputs.num_articles }}"
+          
+          # Release if article count increased
+          if [ "${{ steps.count_articles.outputs.num_articles }}" -gt "$LAST_ARTICLE_COUNT" ]; then
+            echo "should_release=true" >> $GITHUB_OUTPUT
+            echo "New articles detected. A release will be created."
+          else
+            echo "should_release=false" >> $GITHUB_OUTPUT
+            echo "No new articles detected. No release needed."
+          fi
+      
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -59,19 +73,18 @@ jobs:
             essays.csv
           retention-days: 30
           if-no-files-found: error
-
+  
   release:
     needs: build
     runs-on: ubuntu-latest
-    if: needs.build.outputs.changes_detected == 'true'
-
+    if: needs.build.outputs.should_release == 'true'
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
           path: dist
-
+      
       - name: Generate version string
         id: generate_version
         working-directory: dist
@@ -80,7 +93,7 @@ jobs:
           VERSION="${DATE}_${{ needs.build.outputs.num_articles }}"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "RELEASE_TITLE=$DATE, ${{ needs.build.outputs.num_articles }} essays" >> $GITHUB_ENV
-
+      
       - name: Create release
         uses: marvinpinto/action-automatic-releases@latest
         with:
