@@ -28,8 +28,7 @@ if os.path.isfile(FILE):
 
 
 def parse_main_page(base_url: str, articles_url: str):
-    assert base_url.endswith(
-        "/"), f"Base URL must end with a slash: {base_url}"
+    assert base_url.endswith("/"), f"Base URL must end with a slash: {base_url}"
     response = requests.get(base_url + articles_url)
     soup = BeautifulSoup(response.text, "html.parser")
 
@@ -44,8 +43,7 @@ def parse_main_page(base_url: str, articles_url: str):
             a_tag = td.find("font").find("a") if td.find("font") else None
             if a_tag:
                 chapter_links.append(
-                    {"link": urljoin(
-                        base_url, a_tag["href"]), "title": a_tag.text}
+                    {"link": urljoin(base_url, a_tag["href"]), "title": a_tag.text}
                 )
 
     return chapter_links
@@ -107,7 +105,24 @@ for entry in toc:
         parsed = h.handle(content)
         title = "_".join(TITLE.split(" ")).lower()
         title = re.sub(r"[\W\s]+", "", title)
-        DATE = find_date(URL)
+
+        # Try to extract Paul Graham's specific date format first
+        pg_date_match = re.search(
+            r"<font[^>]*>((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})",
+            content,
+            re.IGNORECASE,
+        )
+        if pg_date_match:
+            from dateparser import parse
+
+            date_str = pg_date_match.group(1)
+            parsed_date = parse(date_str)
+            if parsed_date:
+                DATE = parsed_date.strftime("%Y-%m-%d")
+            else:
+                DATE = find_date(content)
+        else:
+            DATE = find_date(content)
         with open(f"./essays/{str(ART_NO).zfill(3)}_{title}.md", "wb+") as file:
             file.write(f"# {str(ART_NO).zfill(3)} {TITLE}\n\n".encode())
             parsed = parsed.replace("[](index.html)  \n  \n", "")
