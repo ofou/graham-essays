@@ -20,7 +20,7 @@ h.escape_all = True
 h.reference_links = True
 h.mark_code = True
 
-ART_NO = 0  # Initialize to 0 so the first entry is 001
+ART_NO = 0
 FILE = "./essays.csv"
 
 if os.path.isfile(FILE):
@@ -32,12 +32,10 @@ def parse_main_page(base_url: str, articles_url: str):
     response = requests.get(base_url + articles_url)
     soup = BeautifulSoup(response.text, "html.parser")
 
-    # Find all relevant 'td' elements
     td_cells = soup.select("table > tr > td > table > tr > td")
     chapter_links = []
 
     for td in td_cells:
-        # use the heuristic that page links are an <a> inside a <font> with a small (bullet) image alongside
         img = td.find("img")
         if img and int(img.get("width", 0)) <= 15 and int(img.get("height", 0)) <= 15:
             a_tag = td.find("font").find("a") if td.find("font") else None
@@ -51,37 +49,50 @@ def parse_main_page(base_url: str, articles_url: str):
 
 toc = list(reversed(parse_main_page("https://paulgraham.com/", "articles.html")))
 
-# rss = feedparser.parse("http://www.aaronsw.com/2002/feeds/pgessays.rss")
-# toc = reversed(rss.entries)
+
+def convert_to_pandoc_footnotes(text):
+    if isinstance(text, bytes):
+        text = text.decode("utf-8")
+
+    notes_section_pattern = r"\*\*Notes?\*\*.*?(?=\n\s*\*\*|\Z)"
+    notes_match = re.search(notes_section_pattern, text, re.DOTALL | re.IGNORECASE)
+
+    if not notes_match:
+        return text.encode("utf-8")
+
+    notes_content = notes_match.group(0)
+
+    footnote_pattern = r"\[(\d+)\]\s*(.*?)(?=\s*\[\d+\]|\s*$)"
+    footnotes = re.findall(footnote_pattern, notes_content, re.DOTALL)
+
+    if not footnotes:
+        return text.encode("utf-8")
+
+    footnote_definitions = {}
+    for note_num, note_content in footnotes:
+        note_content = note_content.strip()
+        note_content = re.sub(r"\s+", " ", note_content)
+        note_content = note_content.strip()
+
+        if note_content:
+            footnote_definitions[note_num] = note_content
+
+    text = re.sub(notes_section_pattern, "", text, flags=re.DOTALL | re.IGNORECASE)
+
+    for note_num in footnote_definitions.keys():
+        text = re.sub(rf"\[{note_num}\]", f"[^{note_num}]", text)
+
+    if footnote_definitions:
+        footnote_defs = []
+        for note_num in sorted(footnote_definitions.keys(), key=int):
+            footnote_content = footnote_definitions[note_num]
+            footnote_defs.append(f"[^{note_num}]: {footnote_content}")
+
+        text += "\n\n" + "\n\n".join(footnote_defs)
+
+    return text.encode("utf-8")
 
 
-def update_links_in_md(joined):
-    matches = re.findall(b"\[\d+\]", joined)
-
-    if not matches:
-        return joined
-
-    for match in set(matches):
-
-        def update_links(match):
-            counter[0] += 1
-            note_name = f"{title}_note{note_number}"
-            if counter[0] == 1:
-                return bytes(f"[{note_number}](#{note_name})", "utf-8")
-            elif counter[0] == 2:
-                return bytes(f"<a name={note_name}>[{note_number}]</a>", "utf-8")
-
-        counter = [0]
-
-        note_number = int(match.decode().strip("[]"))
-        match_regex = match.replace(b"[", b"\[").replace(b"]", b"\]")
-
-        joined = re.sub(match_regex, update_links, joined)
-
-    return joined
-
-
-# Write the header to the CSV file only once
 with open(FILE, "a+", newline="\n") as f:
     fieldnames = ["Article no.", "Title", "Date", "URL"]
     csvwriter = csv.DictWriter(f, fieldnames=fieldnames)
@@ -106,7 +117,6 @@ for entry in toc:
         title = "_".join(TITLE.split(" ")).lower()
         title = re.sub(r"[\W\s]+", "", title)
 
-        # Try to extract Paul Graham's specific date format first
         pg_date_match = re.search(
             r"<font[^>]*>((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})",
             content,
@@ -137,8 +147,8 @@ for entry in toc:
             ]
 
             encoded = " ".join(parsed).encode()
-            update_with_links = update_links_in_md(encoded)
-            file.write(update_with_links)
+            processed_content = convert_to_pandoc_footnotes(encoded)
+            file.write(processed_content)
 
             print(f"✅ {str(ART_NO).zfill(3)} {TITLE}")
 

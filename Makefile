@@ -21,7 +21,7 @@ clean:
 
 merge:
 	@echo "🌪 Merging articles..."
-	pandoc essays/*.md -o graham.md -f markdown_strict
+	pandoc essays/*.md -o graham.md -f markdown
 
 install:
 	$(PKG_MANAGER) install python3
@@ -39,7 +39,7 @@ fetch:
 
 epub: merge
 	@echo "📒 Binding EPUB... "
-	pandoc essays/*.md -o graham.epub -f markdown_strict --metadata-file=metadata.yaml --toc --toc-depth=1 --epub-cover-image=cover.png
+	pandoc essays/*.md -o graham.epub -t epub3 -f markdown --metadata-file=metadata.yaml --toc --toc-depth=1 --epub-cover-image=cover.png
 	@echo "🎉 EPUB file created."
 
 pdf: epub
