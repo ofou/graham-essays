@@ -106,11 +106,6 @@ jobs:
             echo "num_articles=0" >> $GITHUB_OUTPUT
           fi
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y jq
-
       - name: Check if release is needed
         id: check_release_needed
         run: |
@@ -197,11 +192,6 @@ jobs:
         with:
           name: build-artifacts
           path: dist
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y jq
 
       - name: Download previous essays.csv
         run: |
