@@ -24,6 +24,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15  # Prevent hanging workflows
     outputs:
       num_articles: ${{ steps.count_articles.outputs.num_articles }}
       should_release: ${{ steps.check_release_needed.outputs.should_release }}
@@ -39,7 +40,7 @@ jobs:
           path: |
             /var/cache/apt/archives/*.deb
             /var/lib/apt/lists/*
-          key: apt-packages-${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
+          key: apt-packages-${{ runner.os }}-v1
           restore-keys: |
             apt-packages-${{ runner.os }}-
 
