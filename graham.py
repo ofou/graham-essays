@@ -50,7 +50,7 @@ def parse_main_page(base_url: str, articles_url: str):
 toc = list(reversed(parse_main_page("https://paulgraham.com/", "articles.html")))
 
 
-def convert_to_pandoc_footnotes(text):
+def convert_to_pandoc_footnotes(text, essay_id=""):
     if isinstance(text, bytes):
         text = text.decode("utf-8")
 
@@ -79,14 +79,15 @@ def convert_to_pandoc_footnotes(text):
 
     text = re.sub(notes_section_pattern, "", text, flags=re.DOTALL | re.IGNORECASE)
 
+    prefix = f"{essay_id}-" if essay_id else ""
     for note_num in footnote_definitions.keys():
-        text = re.sub(rf"\[{note_num}\]", f"[^{note_num}]", text)
+        text = re.sub(rf"\[{note_num}\]", f"[^{prefix}{note_num}]", text)
 
     if footnote_definitions:
         footnote_defs = []
         for note_num in sorted(footnote_definitions.keys(), key=int):
             footnote_content = footnote_definitions[note_num]
-            footnote_defs.append(f"[^{note_num}]: {footnote_content}")
+            footnote_defs.append(f"[^{prefix}{note_num}]: {footnote_content}")
 
         text += "\n\n" + "\n\n".join(footnote_defs)
 
@@ -147,7 +148,7 @@ for entry in toc:
             ]
 
             encoded = " ".join(parsed).encode()
-            processed_content = convert_to_pandoc_footnotes(encoded)
+            processed_content = convert_to_pandoc_footnotes(encoded, str(ART_NO).zfill(3))
             file.write(processed_content)
 
             print(f"✅ {str(ART_NO).zfill(3)} {TITLE}")
