@@ -28,6 +28,7 @@ Or simply `make all` (which also runs `dependencies` and `wordcount`).
 
 - `make fetch` requires internet access to paulgraham.com. It takes ~25 seconds and writes 230 markdown files to `essays/`.
 - `make epub` produces pandoc warnings about duplicate footnote references; this is expected and does not affect the output.
+- `make epub` uses `epub.css` (no fixed text colors) and patches `META-INF/com.apple.ibooks.display-options.xml` so Apple Books dark mode on iOS renders readable text.
 - The `cover.png` file must exist for the EPUB cover image. It is tracked in the repo.
 - `make pdf` requires `calibre` (`ebook-convert`), which is optional and not needed for the standard pipeline.
 - There are no automated tests. Correctness is verified by running the pipeline end-to-end and checking that `graham.epub`, `graham.md`, and `essays.csv` are generated.
