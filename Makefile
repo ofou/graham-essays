@@ -39,7 +39,8 @@ fetch:
 
 epub: merge
 	@echo "📒 Binding EPUB... "
-	pandoc essays/*.md -o graham.epub -t epub3 -f markdown --metadata-file=metadata.yaml --toc --toc-depth=1 --epub-cover-image=cover.png
+	pandoc essays/*.md -o graham.epub -t epub3 -f markdown --metadata-file=metadata.yaml --toc --toc-depth=1 --epub-cover-image=cover.png --css=epub.css
+	python3 scripts/fix_epub_ibooks.py graham.epub
 	@echo "🎉 EPUB file created."
 
 pdf: epub
